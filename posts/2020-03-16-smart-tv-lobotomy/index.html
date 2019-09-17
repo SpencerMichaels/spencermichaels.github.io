@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.70.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Lobotomizing a TCL R625 Smart TV&nbsp;&ndash;&nbsp;Spencer Michaels</title><link rel="stylesheet" href="/css/core.min.1c8118092e71e63decf3eb38a127706d87c570e63345a5034e7ef2949de3b407734994724900134bc8039682670c0e0e.css" integrity="sha384-HIEYCS5x5j3s8&#43;s4oSdwbYfFcOYzRaUDTn7ylJ3jtAdzSZRySQATS8gDloJnDA4O"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Lobotomizing a TCL R625 Smart TV" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Spencer Michaels</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/portfolio">Portfolio</a><a class="nav item" href="/about">About</a></nav></div></span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Lobotomizing a TCL R625 Smart TV</h1><p class="article date">Mon, Mar 16, 2020</p></section><article class="article markdown-body"><h1 id="preface--rationale">Preface &amp; Rationale</h1>
+<p>Working in the cybersecurity industry, I have learned that there are basically
+two types of internet-connected consumer electronics: those that are
+accidentally insecure, and those that are actively malicious. As a rule,
+anything marketed as a &ldquo;smart&rdquo; version of an otherwise simple appliance is
+likely to be both.</p>
+<p>Smart appliance manufacturers, unsatisfied with the profits stemming from
+customers&rsquo; one-time purchase of the devices themselves, have taken to packing
+them with ads, trackers, and shovelware in order to squeeze from their users a
+continuous post-purchase revenue stream. After all, why not? From an amoral
+business perspective, to do otherwise would simply be leaving free money on the
+table. Only a small minority of users have any inkling of what their smart
+devices are doing behind their backs, and an even smaller subset of those
+actually care enough to let that affect their buying decisions.</p>
+<p>This leaves privacy- and security-conscious individuals like myself in a
+bind. Because we make up such a tiny segment of the market &mdash; especially
+compared to the kind of people who just think the word &ldquo;smart&rdquo; sounds cool and
+know nothing about the downsides &mdash; manufacturers have basically stopped
+producing non-smart variants of many common consumer devices entirely. If, for
+instance, you want to buy a good-quality 4K TV with a modern display panel
+at a reasonable price, you&rsquo;re totally out of luck: as far as I can determine,
+there are literally none available.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Being the kind of person who can&rsquo;t abide by the idea of my electronics
+attempting to surveil, profile, and\or psychologically manipulate me, I was
+thus left with sorely limited options when looking, as I recently was, to
+purchase a 4K TV &mdash; or, more accurately, a TV-sized 2160p dumb display, which
+is all I really wanted. Since I didn&rsquo;t want to compromise on display quality or
+price, I decided to take the &ldquo;none of the above&rdquo; hacker&rsquo;s option: I picked a
+decently-priced smart TV with hardware that I liked (a 55&rdquo; TCL R625), and then
+&ldquo;de-smarted&rdquo; it.</p>
+<p>The astute reader might point out that certain smart TVs actually have a mode
+that disables smart features, chosen during setup either explicitly (as is the
+case with TCLs), or implicitly by declining the smart TV software&rsquo;s terms of
+service (as on LG TVs). Alternately, a concerned user might opt to never
+connect the TV to any Wi-Fi network, connect it to a dummy network with no
+external connectivity, or block its traffic via network egress filtering.</p>
+<p>I don&rsquo;t trust any of these options, however. Even if a non-smart mode is
+available, who knows what it&rsquo;s really doing? The software might just disable
+the smart TV interface and continue snooping as normal, and even if the
+offending functionality really <em>is</em> turned off, it&rsquo;s only a matter of time
+before it is somehow &ldquo;accidentally&rdquo; re-enabled.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> There is even some
+speculation that some smart TVs, if left without a functional network
+connection, will attempt to connect to unsecured Wi-Fi networks (possibly in
+partnership with ubiquitous hotspot providers like Comcast/Xfinity) in order
+to exfiltrate data. From a technical standpoint, these kinds of malicious
+un-features would be trivial to implement, and I&rsquo;d be surprised if they were
+not present in at least some models of smart TV.</p>
+<p>Unfortunately, there do not currently exist any LineageOS-like projects that
+one could use to easily replace the software running on smart TVs, which would
+remove the malicious element.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> There is another option, however; one that
+may well be familiar to anyone who has had to deal with wireless-enabled
+devices running untrusted code in an otherwise secure environment. One can
+simply render the TV unable to connect to any network of its own accord &mdash; by
+physically removing its wireless hardware!</p>
+<p>As it turns out, this is not by any means a difficult task. Even non-technical
+smart TV owners can do it themselves; all that is needed is a screwdriver and a
+bit of caution and patience. What follows is a guide for &ldquo;lobotomizing&rdquo; a smart
+TV &mdash; in this particular case a 55&rdquo; TCL R625, but smart TV internals are all
+similar enough that these steps should apply broadly to other brands and models
+as well.</p>
+<h1 id="the-operation">The Operation</h1>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>A standard-sized Phillips head screwdriver</li>
+<li>A spudger or other thin, flat piece of rigid plastic</li>
+<li>A small amount of electrical tape</li>
+</ul>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>
+<p>If your TV is brand new, plug it in, turn it on, and double-check that the
+display is working correctly.</p>
+</li>
+<li>
+<p>Make sure that at least the standard direction/select/volume buttons on the
+pre-packaged remote work, and if not, pair it with the TV (the first setup
+step for TCL TVs) in order to configure the buttons.</p>
+</li>
+<li>
+<p>If desired, go through the setup and install firmware updates. On my TCL
+R625, this was not necessary, as updates can always be done later over a
+wired Ethernet connection, and setup does not require Internet. However, if
+you are using another brand/model of TV, you may want to set up the TV
+first to avoid any problems that might occur due to missing a wireless card
+during the setup stage.</p>
+</li>
+<li>
+<p>Unplug the TV and lay if screen-down on a soft surface. Make sure the
+surface is flat so that pressure is evenly spread across the display, which
+is the most fragile part of the device.</p>
+</li>
+<li>
+<p>Identify the back cover and remove its associated screws (note that those in
+deep holes don&rsquo;t necessarily need to be removed fully from the cover, just
+loosened). I recommend laying the screws out somewhere in a pattern matching
+their original placement, as they are not necessarily all identical. Note
+also that for the TCL R625 specifically, it is necessary to take the feet
+off in order to fully remove the case.</p>
+</li>
+<li>
+<p>Carefully lift the back cover off. Before going any further, dispel any
+static electricity that may have accumulated on your body by touching a
+grounded metal object on order to avoid damaging the TV&rsquo;s internal
+electronics.</p>
+<p><img  src="images/001.jpeg"
+        alt="The TV with the back cover removed"/></p>
+</li>
+<li>
+<p>Identify the wireless card. In the TCL R625, it is located along the bottom
+edge, slightly to the left. In other TVs, look for a small board, about the
+size of a credit card, with a MAC address and an FCC decal printed on it. It
+will be attached to at least two cables: a ribbon cable connecting it to the
+motherboard, and a cylindrical cable with a round, right-angled connector
+(called a U.FL cable) leading to the wireless antenna.</p>
+<p><img  src="images/002.jpeg"
+        alt="The network card up close"/></p>
+</li>
+<li>
+<p>Pry the wireless card out of its housing by disengaging the three plastic
+clips on the top, left, and right. Be careful not to tug on the cables,
+which are still connected.</p>
+<p><img  src="images/003.jpeg"
+        alt="The network card removed from its housing"/></p>
+</li>
+<li>
+<p>Remove the ribbon cable. Use a fingernail to flip up the black piece at the
+top of the header facing outward toward the cable; this locks the end of
+the cable in place when in the down position. Then, grab the cable by its
+base and pull it firmly, straight out away from the header, while
+rocking it slightly side to side. On my TV, this required a fair amount of
+force &mdash; more than it looked like the cable could take at first &mdash; so
+don&rsquo;t worry if it doesn&rsquo;t slide out easily; just make sure the header
+lock is disengaged.</p>
+</li>
+<li>
+<p>Remove the antenna cable. Rotate the U.FL connector around until there is
+nothing under it but the PCB board, then take a small spudger and insert it
+between the board and the protruding metal end of the connector, using it as
+a lever to pry the cable up. It should pop right off.</p>
+<p><img  src="images/004.jpeg"
+        alt="The network card removed"/></p>
+</li>
+<li>
+<p>Use electrical tape to tape the newly-connected cables to the inside of the
+case; this prevents them from moving around and potentially touching other
+electrical contacts in the device, which could cause a short-circuit. I used
+a small amount of tape just below each connector head, affixing the cables
+where an existing cluster of wires already ran nearby. Don&rsquo;t use too strong
+an adhesive, especially on the relatively thin ribbon cable, as you&rsquo;ll want
+to be able to take the tape off in the event that you want to reconnect the
+wireless card later.</p>
+</li>
+<li>
+<p>Snap the wireless card back into its housing.</p>
+<p><img  src="images/005.jpeg"
+        alt="The network card replaced"/></p>
+</li>
+<li>
+<p>Replace the back cover and feet, and re-tighten the screws. Don&rsquo;t overdo
+it, though; screws in consumer electronics tend to strip easily!</p>
+</li>
+<li>
+<p>Stand the TV back up, plug it in, and turn it on. Enjoy your new dumb
+display!</p>
+</li>
+</ol>
+<h1 id="side-effects">Side Effects</h1>
+<p>Obviously, smart TV software is not generally designed with a missing wireless
+card in mind, so &ldquo;lobotomizing&rdquo; a smart TV may result in some side effects.
+These will depend heavily on your TV&rsquo;s exact hardware and software, so be
+prepared</p>
+<p>My TCL TV generally worked fine after disconnecting its wireless card, with
+only a few minor quirks here and there.</p>
+<ul>
+<li>
+<p>The TV turns itself back on occasionally if turned off via the power button
+but left powored (plugged in). My guess is that this is due to the TV
+software trying to poll the network card intermittently in idle mode, which
+causes a crash followed by a reboot, thus turning the TV back on. I keep the
+TV plugged in to a surge protector with an easily-accessible button anyway,
+so I just get around this issue by using that to turn off its physical power
+after software shutdown.</p>
+</li>
+<li>
+<p>The prepackaged remote does not work, though likely due to my own mistake.
+The Roku remote the TCL R625 comes with does not actually come pre-programmed
+with the infrared pulse codes needed to control the TV. Instead, the TV
+programs the codes into the remote when the two are paired, which I believe
+happens via an ad-hoc Wi-Fi hotspot that the TV itself creates during setup.
+I did not know this until after I pulled out the wireless card, and was thus
+left with a remote that is non-functional save for the power button. That
+said, however, a wireless-disabled smart TV&rsquo;s lack of pairing capability is
+easily overcome with either a programmable universal remote<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> or a phone
+with an IR blaster and a universal or TCL remote app.</p>
+</li>
+<li>
+<p>Opening the Roku secret Wi-Fi menu<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> crashes the TV OS, resulting in a
+short hang followed by a reboot. This is a non-issue, however, since the
+information that would have been displayed on this menu is irrelevant without
+a Wi-Fi card anyway.</p>
+</li>
+</ul>
+<p>Other than the above, the TV works flawlessly as a display, which is all I need
+it to do.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>A side note for the sake of informational completeness: if money is not
+an object, one can buy a so-called commercial signage or &ldquo;hospitality&rdquo;
+display. These are the TV screens that one sees in airports, hotels, etc.,
+and are usually completely dumb, as their typical use case involves getting
+display data from a central controller. However, such displays typically cost
+several times more than what an equivalent consumer TV would cost, and tend
+to lack cinematically-relevant features like HDR. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Also of note, there do exist few lower-tier manufacturers such as Spectre
+that sell dumb 4K TVs, but based on my research online, there is a general
+consenus that their devices are unreliable and of fairly poor quality. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Compare similar reports of Windows updates causing telemetry opt-outs to
+reset, opting users back into being tracked. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>Given how vulnerable IoT devices typically are, it is fairly trivial to
+shell and root most smart TVs. One could, in theory, root a smart TV and
+attempt to remove its tracking and advertising components, but this is
+probably more trouble than it&rsquo;s worth, as the malicious and benign code are
+unlikely to be easily separateable. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>See <a href="https://support.tclusa.com/roku-tv-remote-codes">https://support.tclusa.com/roku-tv-remote-codes</a>. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p>Item 3 of
+<a href="https://gist.github.com/kgust/3ab2f60c252a1598126ecd2bf239cc10">https://gist.github.com/kgust/3ab2f60c252a1598126ecd2bf239cc10</a>. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article><section class="article labels"><a class="tag" href=/tags/security/>security</a><a class="tag" href=/tags/hardware/>hardware</a></section></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/2019-08-03-chinese-cybersecurity-reading-material/"><span class="li iconfont icon-article"></span>Chinese Cybersecurity Reading Material</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">© 2020 Spencer Michaels</p>
+    <p class="powerby">
+      <span>Generated by </span>
+        <a href="https://gohugo.io" target="_blank">Hugo</a>
+      <span> with a lightly-modified </span>
+        <a href="https://themes.gohugo.io/hugo-notepadium/" target="_blank">Notepadium</a>
+      <span> theme.</span>
+      </p>
+</div>
+</section></body>
+
+</html>

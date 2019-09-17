@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>security on Spencer Michaels</title>
+    <link>/tags/security/</link>
+    <description>Recent content in security on Spencer Michaels</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020 Spencer Michaels</copyright>
+    <lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lobotomizing a TCL R625 Smart TV</title>
+      <link>/posts/2020-03-16-smart-tv-lobotomy/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2020-03-16-smart-tv-lobotomy/</guid>
+      <description>A guide to physically disabling the wireless capability of an ad- and
+tracker-laden smart TV.</description>
+      
+    </item>
+    
+    <item>
+      <title>Chinese Cybersecurity Reading Material</title>
+      <link>/posts/2019-08-03-chinese-cybersecurity-reading-material/</link>
+      <pubDate>Sat, 03 Aug 2019 18:34:58 -0700</pubDate>
+      
+      <guid>/posts/2019-08-03-chinese-cybersecurity-reading-material/</guid>
+      <description>A list of Chinese-language cybersecurity blogs and journals for linguistic
+and technical study.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

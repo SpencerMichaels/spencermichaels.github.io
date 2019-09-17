@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Spencer Michaels</title>
+    <link>/</link>
+    <description>Recent content on Spencer Michaels</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020 Spencer Michaels</copyright>
+    <lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Posts</title>
+      <link>/posts/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>I&amp;rsquo;m Spencer, and I make and break software &amp;mdash; bilingually!
+I&amp;rsquo;m currently a security consultant and research director at NCC Group, where I do cybersecurity assessments for a wide range of clients and technologies. I&amp;rsquo;m primarily interested in the low-level aspects of computing: operating systems, kernels, networking, and even a bit of hardware. A list of my notable technical projects and publications, both professional and personal, can be found on the Portfolio page.</description>
+      
+    </item>
+    
+    <item>
+      <title>Portfolio</title>
+      <link>/portfolio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/</guid>
+      <description>Whitepapers  Assessing Unikernel Security, Apr 2 2019. Inducing data loss in Zigbee networks via join/association handshake spoofing, IEEE Conference on Communications and Network Security, 2016.  Talks  Xen API Archaeology: Creating a Full-Featured VMI Debugger for the Xen Hypervisor, Xen Project Developer and Design Summit 2019, Jul 10, 2019. Slides here. Unikernel Apocalypse: Big Trouble in Ring 0, ToorCon XX, Setp 2018. Slides here.  Tools &amp;amp; Libraries  xendbg, a feature-complete reference implementation of a modern Xen VMI debugger.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
